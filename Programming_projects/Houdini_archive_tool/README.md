@@ -55,4 +55,4 @@ Ad
 5. The execution part is divided into three parts:<br/>
 a) Make summary: if the -f flag was used the script saves the collected data about the project into "Summary_raw.json file in the source directory. It runs the jq command on a saved file and redirects it to the new file Summary.json (to make json code more readable). The old raw file is removed. It prints the message "Summary created",<br/>
 b) Make archive: correct_directory and file_exist functions are called and archive is executed with tar command. It prints the message "Archive done",<br/>
-c) Remove: if the -r flag is used the script removes the original source project. It prints the message "Original directory removed".<br/>
+c) Remove: if the -r flag is used the script removes the original source project. It prints the message "Original directory removed".<br/> 
