@@ -11,7 +11,7 @@
   Hi there! I am Brygida and welcome on my GitHub portfolio website.  <br/> I am a recent MA Digital Effects Graduate with Distinction from Bournemouth University and an aspiring Pipeline TD. <br/>
   Under "Programming_project" you can find my programming and scripting projects done during my time at BU. <br/>
   <br/>
- Link to my 3D Generalist Showreel:
- https://vimeo.com/557784176
+ Link to my 3D Generalist Showreel: <br/>
+ https://vimeo.com/557784176 <a href="http://www.google.com" target="blank">google</a>
 
 <br clear="right"/>
