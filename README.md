@@ -12,6 +12,6 @@
   Under "Programming_project" you can find my programming and scripting projects done during my time at BU. <br/>
   <br/>
  Link to my 3D Generalist Showreel: <br/>
- https://vimeo.com/557784176 <a href="https://vimeo.com/557784176" target="_blank">external link</a>
+ https://vimeo.com/557784176 
 
 <br clear="right"/>
