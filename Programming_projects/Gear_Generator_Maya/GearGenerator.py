@@ -68,7 +68,7 @@ def basicGear(teethShape, option, teethNumber, gearHeight, gearRadius, gearThick
     cmds.select(clear=True)
    
    	# the loop creates the ring pattern on the first side of the gear
-   	# options which require the creations of the rings on first side of the gear         
+   	# options which require the creation of the rings on first side of the gear         
     if option == 'ringOneSide' or option == 'ringBothSides' or option =='ringAndTab':
         cmds.select(clear=True)
         
@@ -332,7 +332,7 @@ def createUI(*args):
     '''create the user interface for modelling the gear, the random creation of the gear, disperse'''
 
     #clean the whole scene 
-    gearGeneratorWindow = cmds.window(title ="GearGenerator", widthHeight=(280,340))    
+    gearGeneratorWindow = cmds.window(title ="GearGenerator", widthHeight=(410,500))    
     cmds.showWindow(gearGeneratorWindow)
     scrollLayout = cmds.scrollLayout(horizontalScrollBarThickness=16, verticalScrollBarThickness=16)      
     gearGeneratorWindow = 'GearGenerator'
@@ -342,24 +342,30 @@ def createUI(*args):
     
     #first section: model individual gear    
     cmds.columnLayout(adjustableColumn=True)
-    cmds.separator( height=1, style='in' )
-    cmds.text(label = 'Create your own gear:')
-    cmds.separator( height=1, style='in' )            
-    shapeControl=cmds.optionMenu( label='Shape of teeth:')        
+    cmds.separator( height=15, style='in' )
+    cmds.text(label='Your custom gear:', font='fixedWidthFont')
+    cmds.separator( height=15, style='in' )            
+    shapeControl=cmds.optionMenu( label='Teeth shape:')        
     cmds.menuItem( label='rectangular')
     cmds.menuItem( label='triangular')        
-    numTeethGearControl=cmds.intSliderGrp( field=True, label='Number of teeth', minValue=5, maxValue=50, value=10, step=1)
+    numTeethGearControl=cmds.intSliderGrp( field=True, label='Teeth number', minValue=5, maxValue=50, value=10, step=1)
+    cmds.separator( height=10, style='none')
+    cmds.text(label='The ratio of teeth and gear radius:', al="center")
+    cmds.separator( height=4, style='none')
+    radiusPartControl=cmds.floatSliderGrp( field=True, label='Ratio:', minValue=0.05, maxValue=0.5, value=0.3, step=0.01)        
+    cmds.separator( height=12, style='none')
+    cmds.text(label='Gear size:', al="center")
+    cmds.separator( height=4, style='none')
+    heightGearControl=cmds.floatSliderGrp( field=True, label='Height:', minValue=0.1, maxValue=10, value=1, step=0.1)
+    radiusGearControl=cmds.floatSliderGrp( field=True, label='Radius:', minValue=0.1, maxValue=20, value=5, step=0.1) 
+    thicknessGearControl=cmds.floatSliderGrp( field=True, label='Thickness:', minValue=0.1, maxValue=20, value=1, step=0.1)               
     
-    cmds.text(label='What part of the radius teeth should be?', al="center")
-    radiusPartControl=cmds.floatSliderGrp( field=True, label='Radius part:', minValue=0.05, maxValue=0.5, value=0.3, step=0.01)        
-    heightGearControl=cmds.floatSliderGrp( field=True, label='Height of the gear:', minValue=0.1, maxValue=10, value=1, step=0.1)
-    radiusGearControl=cmds.floatSliderGrp( field=True, label='Radius of the gear:', minValue=0.1, maxValue=20, value=5, step=0.1) 
-    thicknessGearControl=cmds.floatSliderGrp( field=True, label='Thickness of the gear:', minValue=0.1, maxValue=20, value=1, step=0.1)               
-    cmds.separator( height=1, style='in' )
-    cmds.text(label = 'Choose patterns for your gear:')
+    cmds.separator( height=10, style='in' )
+    cmds.text(label = 'PATTERN', font='fixedWidthFont')
+    cmds.separator( height=8, style='none')
         
     patternControl=cmds.optionMenu(
- label='Which pattern would you like?')        
+ label='Choose pattern:')        
     ringOneSideControl=cmds.menuItem( label='ringOneSide')
     ringBothSidesControl=cmds.menuItem( label='ringBothSides')
     tabOneSideControl=cmds.menuItem( label='tabOneSide')
@@ -367,7 +373,7 @@ def createUI(*args):
     ringAndTabSidesControl=cmds.menuItem( label='ringAndTab')
     cmds.separator( height=1, style='in' )            
     # second section: UI for ring pattern
-    cmds.frameLayout( label='Settings for ring pattern', collapsable=True, cl=True )
+    cmds.frameLayout( label='Ring pattern settings', collapsable=True, cl=True )
     cmds.text(label = 'How many rings would you like?')
     cmds.separator( height=1, style='in' )
     ringNumberFirstSideControl=cmds.intSliderGrp( field=True, label='First side:', minValue=1, maxValue=50, value=1, step=1)
@@ -382,7 +388,7 @@ def createUI(*args):
  
     # third section: first ring
     oneRing = cmds.columnLayout(adjustableColumn=True)
-    cmds.text(label = 'Choose the parameters for the first ring:')
+   
     
     cmds.text(label = 'First side of the gear:')
     edge0Control=cmds.floatSliderGrp( field=True, label='Position of first edge:', minValue=0.1, maxValue=0.9, value=0.5, step=0.01)
@@ -399,7 +405,7 @@ def createUI(*args):
                              
     # fouth section:  second ring
     twoRings = cmds.columnLayout( adjustableColumn=True )
-    cmds.text(label = 'Choose the parameters for the second ring:')
+ 
     
     cmds.text(label = 'First side of the gear:')
     edge1Control=cmds.floatSliderGrp( field=True, label='Position of the first edge:', minValue=0.1, maxValue=0.9, value=0.5, step=0.01)
@@ -417,7 +423,7 @@ def createUI(*args):
                     
     # fifth section: third ring
     threeRings = cmds.columnLayout( adjustableColumn=True )
-    cmds.text(label = 'Choose the parameters for the third ring:')
+   
     
     cmds.text(label = 'First side of the gear:')
     edge2Control=cmds.floatSliderGrp( field=True, label='Position of the first edge:', minValue=0.1, maxValue=0.9, value=0.5, step=0.01)
@@ -435,7 +441,7 @@ def createUI(*args):
                             
     # sixth section: fourth ring
     fourRings = cmds.columnLayout( adjustableColumn=True )
-    cmds.text(label = 'Choose the parameters for the fourth ring:')
+   
     
     cmds.text(label = 'First side of the gear:')
     edge3Control=cmds.floatSliderGrp( field=True, label='Position of the first edge:', minValue=0.1, maxValue=0.9, value=0.5, step=0.01)
@@ -453,7 +459,7 @@ def createUI(*args):
                                             
     # seventh section: fifth ring
     fiveRings= cmds.columnLayout( adjustableColumn=True ) 
-    cmds.text(label = 'Choose the parameters for the fifth ring:')
+ 
     
     cmds.text(label = 'First side of the gear:')
     edge4Control=cmds.floatSliderGrp( field=True, label='Position of the first edge:', minValue=0.1, maxValue=0.9, value=0.5, step=0.01)
@@ -474,7 +480,7 @@ def createUI(*args):
     cmds.setParent( '..' )
     
     # eighth section: UI for tab pattern
-    cmds.frameLayout( label='Settings for tab pattern', collapsable=True, cl=True)
+    cmds.frameLayout( label='Tab pattern settings', collapsable=True, cl=True)
     form1 = cmds.formLayout()
     cmds.columnLayout(adjustableColumn=True)
     cmds.text(label = "Warning! If you have chosen option: 'ringAndTab' you need to fill the fields for the second side of the gear.",  backgroundColor=(1, 0.6, 0.2))
