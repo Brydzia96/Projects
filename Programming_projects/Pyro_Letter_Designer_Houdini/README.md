@@ -1,3 +1,5 @@
+<img src="https://github.com/Brydzia96/Projects/blob/main/images/Pyro_Title.png" width="90%" height="90%", align="center">
+
 # Houdini Pyro Letter Designer
 ## Description
 
